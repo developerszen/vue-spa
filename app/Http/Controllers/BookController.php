@@ -95,15 +95,15 @@ class BookController extends Controller
      */
     public function edit($author)
     {
-        return Book::with([
+        $record = Book::with([
             'category' => function ($query) {
                 return $query->select(['id', 'name']);
             },
-            'authors' => function ($query) {
-                return $query->select(['authors.id', 'name']);
-            },
         ])->select('id', 'category_id', 'title', 'synopsis', 'image')->findOrFail($author);
 
+        $record->authors = $record->authors()->pluck('authors.id')->toArray();
+
+        return $record;
     }
 
     /**
