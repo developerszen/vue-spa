@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Book;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -51,6 +53,7 @@ class BookController extends Controller
             'category_id' => $request->input('category_id'),
             'title' => $request->input('title'),
             'synopsis' => $request->input('synopsis'),
+            'created_at' => now(),
         ]);
 
         if ($request->hasFile('image')) {
@@ -58,6 +61,8 @@ class BookController extends Controller
 
             $record->update(['image' => $path]);
         }
+
+        $record->authors()->attach($request->input('authors'));
 
         return $record;
     }
@@ -148,6 +153,8 @@ class BookController extends Controller
 
         $book->update(['image' => $path]);
 
+        $book->authors()->sync($request->input('authors'));
+
         return $book;
     }
 
@@ -164,5 +171,13 @@ class BookController extends Controller
         $book->delete();
 
         return response([], 204);
+    }
+
+    function resources()
+    {
+        $categories = Category::latest()->get(['id', 'name']);
+        $authors = Author::latest()->get(['id', 'name']);
+
+        return response()->json(compact('categories', 'authors'));
     }
 }

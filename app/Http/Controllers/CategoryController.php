@@ -39,6 +39,7 @@ class CategoryController extends Controller
         $record = Category::create([
             'created_by' => auth()->user()->id,
             'name' => $request->input('name'),
+            'created_at' => now(),
         ]);
 
         return $record;
@@ -111,7 +112,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if (count($category->book))
+        if ($category->book()->exists())
         {
             return response()->json(['error' => 'integrity violation'], 500);
         }

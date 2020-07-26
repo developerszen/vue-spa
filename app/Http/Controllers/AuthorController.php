@@ -40,6 +40,7 @@ class AuthorController extends Controller
         $record = Author::create([
             'created_by' => auth()->user()->id,
             'name' => $request->input('name'),
+            'created_at' => now(),
         ]);
 
         return $record;
