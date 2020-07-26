@@ -39,6 +39,7 @@ class BookController extends Controller
             'category_id' => 'required|exists:categories,id',
             'title' => [
                 'required',
+                'max:150',
                 Rule::unique('books')
                     ->where(function ($query) {
                         return $query->where('deleted_at', null);
@@ -128,6 +129,7 @@ class BookController extends Controller
             'category_id' => 'required|exists:categories,id',
             'title' => [
                 'required',
+                'max:150',
                 Rule::unique('books')
                     ->where(function ($query) {
                         return $query->where('deleted_at', null);

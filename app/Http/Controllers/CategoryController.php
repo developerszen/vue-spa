@@ -29,6 +29,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => [
                 'required',
+                'max:40',
                 Rule::unique('categories')
                     ->where(function ($query) {
                         return $query->where('deleted_at', null);
@@ -88,6 +89,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => [
                 'required',
+                'max:40',
                 Rule::unique('categories')
                     ->where(function ($query) {
                         return $query->where('deleted_at', null);
