@@ -1,5 +1,7 @@
 <template lang="pug">
   v-app
+    notifications
+    
     router-view
 </template>
 

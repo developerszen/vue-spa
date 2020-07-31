@@ -1,6 +1,6 @@
 <template lang="pug">
     v-main(class="primary")
-        v-container
+        v-container(fill-height)
             router-view
 </template>
 
