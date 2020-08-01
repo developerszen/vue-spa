@@ -98,9 +98,17 @@
                         title: this.$t("general.notifications.success.title"),
                         text: this.$t("auth.login_success"),
                     });
+
+                    this.$router.push({ name: "admin.home" });
                 })
                 .catch(() => {
                     this.loading = false;
+
+                    this.$notify({
+                        type: "error",
+                        title: this.$t("general.notifications.error.title"),
+                        text: this.$t("auth.verify_credentials"),
+                    });
                 });
             }
         }
