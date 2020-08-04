@@ -9,6 +9,8 @@ import '@/plugins/vue-notification';
 import '@/plugins/vue-moment';
 import '@/router/interceptors';
 
+import '@/styles/_main.scss';
+
 Vue.config.productionTip = false
 
 

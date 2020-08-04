@@ -73,7 +73,7 @@ export default {
                 this.$notify({
                     type: "success",
                     title: this.$t("general.notifications.success.title"),
-                    text: this.$t("auth.logout_sueccessful")
+                    text: this.$t("auth.logout_successful")
                 })
 
                 this.$router.push({ name: "auth.login" });
