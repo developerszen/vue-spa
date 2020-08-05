@@ -57,6 +57,11 @@ export default {
                     title: this.$t("admin.home.name"),
                     to: { name: "admin.home" }
                 },
+                {
+                    icon: "fas fa-pen-nib",
+                    title: this.$t("admin.author.name"),
+                    to: { name: "admin.author.list" }
+                },
             ]
         }
     },
