@@ -8,6 +8,7 @@ import '@/plugins/vee-validate';
 import '@/plugins/vue-notification';
 import '@/plugins/vue-moment';
 import '@/router/interceptors';
+import '@/components';
 
 import '@/styles/_main.scss';
 
