@@ -62,6 +62,17 @@ export default {
                     title: this.$t("admin.author.name"),
                     to: { name: "admin.author.list" }
                 },
+                {
+                    icon: "fas fa-sitemap",
+                    title: this.$t("admin.category.name"),
+                    to: { name: "admin.category.list" }
+                },
+                {
+                    icon: "fas fa-book",
+                    title: this.$t("admin.book.name"),
+                    to: { name: "admin.book.list" }
+                },
+
             ]
         }
     },
