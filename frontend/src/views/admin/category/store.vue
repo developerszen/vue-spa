@@ -2,7 +2,7 @@
     v-row(justify="center")
         v-col.py-0(cols="12")
             //- Title
-            h3.secondary--text {{ $t('admin.author.store') }}
+            h3.secondary--text {{ $t('admin.category.store') }}
 
         v-row(justify="center")
             v-col(xl="5" lg="5" md="6" sm="10" xs="12" cols="12")
@@ -12,21 +12,19 @@
                     v-card-subtitle.white--text {{ $t('general.fields_requireds') }}
 
                     v-card-text
-                        display-errors(v-if="errors" :errors="errors")
-
                         validation-observer(v-slot="{ invalid }")
                             v-row
                                 v-col(cols="12")
                                     validation-provider(
-                                        :name="$t('admin.author.fields.name')"
+                                        :name="$t('admin.category.fields.name')"
                                         :rules="'required|max:80'"
                                         v-slot="{ errors }"
                                     )
                                         v-text-field(
                                             v-model="payload.name"
                                             counter="80"
-                                            prepend-icon="fas fa-pen-nib"
-                                            :label="$t('admin.author.fields.name')"
+                                            prepend-icon="fas fa-sitemap"
+                                            :label="$t('admin.category.fields.name')"
                                             :error-messages="errors"
                                             dense
                                             outlined
@@ -55,15 +53,14 @@ export default {
             loading: false,
             payload: {
                 name: ""
-            },
-            errors: null
+            }
         }
     },
     methods: {
         save() {
             this.loading = true;
 
-            axios.post('/api/authors', this.payload).then(() => {
+            axios.post('/api/categories', this.payload).then(() => {
                 this.loading = false;
 
                 this.$notify({
@@ -72,11 +69,9 @@ export default {
                     text: this.$t('general.notifications.success.server'),
                 });
 
-                this.$router.push({ name: 'admin.author.list' });
-            }).catch((error) => {
+                this.$router.push({ name: 'admin.category.list' });
+            }).catch(() => {
                 this.loading = false;
-
-                this.errors = error.response.data.errors;
 
                 this.$notify({
                     type: 'error',

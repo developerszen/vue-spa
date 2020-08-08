@@ -10,6 +10,17 @@
                         v-col.text-center(cols="12")
                             v-icon(color="secondary" size="80") fas fa-fingerprint
 
+                        v-col.pb-0(cols="12")
+                            v-select(
+                                    v-model="$i18n.locale"
+                                    :items="langs"
+                                    prepend-icon="fas fa-language"
+                                    :label="$t('general.select_language')"
+                                    @change="setLang"
+                                    dense
+                                    outlined
+                                    dark
+                                )
                     validation-observer(v-slot="{ invalid }")
                         v-row
                             //- Email
@@ -81,7 +92,11 @@
                     email: "",
                     password: "",
                     remember: false
-                }
+                },
+                langs: [
+                    { text: "Español", value: "es" },
+                    { text: "English", value: "en" },
+                ]
             }
         },
         methods: {
@@ -110,6 +125,9 @@
                         text: this.$t("auth.verify_credentials"),
                     });
                 });
+            },
+            setLang(lang) {
+                this.$moment.locale(lang)
             }
         }
     };

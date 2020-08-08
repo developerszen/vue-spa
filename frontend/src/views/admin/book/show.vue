@@ -8,6 +8,13 @@
 
         v-row(v-else justify="center")
             v-col(xl="5" lg="5" md="6" sm="10" xs="12" cols="12")
+                //- Image
+                v-img.mb-3(
+                    :src="record.image ? `/${record.image}` : '/images/books/default.jpg'"
+                    aspect-ratio="2"
+                    contain
+                    )
+                //- Body
                 v-card(color="primary")
                     v-card-text
                         v-row
