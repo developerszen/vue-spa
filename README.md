@@ -1,1 +1,1 @@
-# Vue SPA v1.0
+# Vue SPA v3.0
