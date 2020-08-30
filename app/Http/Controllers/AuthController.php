@@ -34,6 +34,10 @@ class AuthController extends Controller
         ], 401);
     }
 
+    function me() {
+        return auth()->user();
+    }
+
     function logout()
     {
         auth()->logout();

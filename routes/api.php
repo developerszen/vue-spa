@@ -1,9 +1,10 @@
 <?php
 
-Route::post('login', 'AuthController@login');
+Route::post('auth/login', 'AuthController@login');
 
 Route::middleware(['auth:api'])->group(function () {
-    Route::post('logout', 'AuthController@logout');
+    Route::get('auth/me', 'AuthController@me');
+    Route::post('auth/logout', 'AuthController@logout');
 
     Route::get('books/resources',            'BookController@resources');
     Route::get('books/{book}/edit',          'BookController@edit');
@@ -15,4 +16,6 @@ Route::middleware(['auth:api'])->group(function () {
         'categories' => 'CategoryController',
         'books' =>      'BookController',
     ]);
+
+    Route::get('validators/unique', 'ValidatorController@unique');
 });
